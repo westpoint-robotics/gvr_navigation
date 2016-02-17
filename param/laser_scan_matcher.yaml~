@@ -1,0 +1,91 @@
+#Laser_scan_matcher:
+<!-- Laser Scan matcher params -->
+
+fixed_frame: map
+    base_frame: base_link <!--(string, default: "base_link")-->
+
+<!--Motion predition -->
+
+use_imu: true <!-- (bool, default: true) Whether to use an imu for the theta prediction of the scan registration. Requires input on /imu/data topic. -->
+
+use_odom: false <!--(bool, default: true)
+
+    Whether to use wheel odometry for the x-, y-, and theta prediction of the scan registration. Requires input on odom topic. -->
+
+use_vel: false <!-- (bool, default: false)
+
+    Whether to use constant velocity model for the x-, y-, and theta prediction of the scan registration. Requires input on vel topic. -->
+
+<!--Pointcloud input
+
+Parameters when using sensor_msgs/PointCloud2 instead of sensor_msgs/LaserScan messages.
+-->
+use_cloud_input: false <!-- (bool, default: false)
+
+    Whether to subscribe to a /cloud topic with sensor_msgs/PointCloud2 messages instead of a /scan topic with sensor_msgs/LaserScan messages. -->
+
+cloud_range_min <!--(double, default: 0.1)
+
+    The minimum range of the sensor, if using sensor_msgs/PointCloud2 messages. Not needed if using sensor_msgs/LaserScan messages. 
+-->
+cloud_range_max: 50.0<!-- (double, default: 50.0)
+
+    The maximum range of the sensor, if using sensor_msgs/PointCloud2 messages. Not needed if using sensor_msgs/LaserScan messages. 
+-->
+<!--Keyframes
+
+Parameters for setting up keyframe-scan based registration. Using the default values, the keyframe is updated when the sensor moves 10 cm or 10 degrees. Setting either of these to zero will reduce to frame-to-frame scan matching. Leeping them at default levels should reduce drift while robot is stationary.
+-->
+kf_dist_linear: .1 <!--(double, default: 0.10)
+
+    What distance the fixed frame needs to move before updating the keyframe scan (in meters) 
+-->
+kf_dist_angular: .0175 <!-- (double, default: 0.175)
+
+    What angle the fixed frame needs to move before updating the keyframe scan (in radians). 
+-->
+<!--Output-->
+
+~publish_tf: true<!-- (bool, default: true)
+
+    whether to publish scan matcher's estimation for the position of the base frame in the world frame as a transform. 
+-->
+~publish_pose: true<!-- (bool, default: true)
+
+    whether to publish scan matcher's estimation for the position of the base frame in the world frame as a geometry_msgs/Pose2D 
+-->
+~publish_pose_stamped:false <!--(bool, default: false)
+
+    whether to publish scan matcher's estimation for the position of the base frame in the world frame as a geometry_msgs/PoseStamped 
+-->
+<!--Scan matching-->
+
+~max_iterations:10 <!--(int, default: 10)
+
+    Maximum ICP cycle iterations 
+-->
+~max_correspondence_dist<!-- (double, default: 0.3)
+
+    Maximum distance for a correspondence to be valid 
+-->
+~max_angular_correction_deg<!-- (double, default: 45.0)
+
+    Maximum angular displacement between scans, in degrees 
+-->
+~max_linear_correction <!--(double, default: 0.50)
+
+    Maximum translation between scans (m) 
+-->
+~epsilon_xy<!-- (double, default: 0.000001)
+-->
+    A threshold for stopping (m) 
+-->
+~epsilon_theta<!-- (double, default: 0.000001)
+
+    A threshold for stopping (rad) 
+-->
+~outliers_maxPerc <!--(double, default: 0.90)
+
+    Percentage of correspondences to consider: if 0.90, always discard the top 10% of correspondences with more error 
+-->
+
