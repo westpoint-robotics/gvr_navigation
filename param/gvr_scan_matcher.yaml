@@ -1,7 +1,7 @@
 #Laser_scan_matcher:
 #<!-- Laser Scan matcher params -->
 
-    fixed_frame: map
+    fixed_frame: odom
     base_frame: base_link
 
     use_imu: true

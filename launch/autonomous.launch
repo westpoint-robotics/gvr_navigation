@@ -1,16 +1,16 @@
 <!--GVR Autonomous Launch-->
 <launch>
 
-
+<!--
     <node pkg="tf" type="static_transform_publisher" name="baselink_to_basefootprint"
     args="0 0 0 0 0 0 base_link base_footprint 100" />
-
-<node pkg="tf" type="static_transform_publisher" name="baselink_to_velodyne"
-   args=" 0.18 0 0.475 -1.57 0 0 base_link velodyne 100" />
-
-     <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu"
+ <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu"
     args="0 0 0.475 0 0 0 base_link imu 100" />
 
+
+-->
+    <node pkg="tf" type="static_transform_publisher" name="velodyne_to_velodyneStatic"
+   args=" 0 0 0 0 0 0 velodyne_laser_static velodyne  100" />
 
      <!-- ========== Load Map Server   ========= -->
   <node pkg="map_server" type="map_server" name="map_server" output="screen"
@@ -20,12 +20,8 @@
 </node> 
      <!-- ========== Integrate Pioneer Robot ========== -->
 
-  <!--TODO NEED URDF <include file="$(find p2os_urdf)/launch/pioneer3at_urdf.launch"/>-->
+ <include file="$(find gvr_navigation)/launch/gvr_bot_urdf.launch"/>
 
- <!-- TODO Change over to the GVR drive <node pkg="rosaria" type="RosAria" name="RosAria">
-    <param name="port" value="/dev/ttyUSB0"/>
-    <remap from="/tf" to="/rosariatf"/>
-  </node> -->
 
 <!-- launch the GVR bot -->
 <node name="gvr_bot_bridge" pkg="gvr_bot" type="run_gvr_bot.sh" output="screen" />
@@ -44,21 +40,20 @@
     <node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu">
     </node> 
 
-   <!-- ========== Start the 3d Laser and Laser Scan ========== 
-    <include file="$(find velodyne_pointcloud)/launch/DML_VLP16_points.launch">
-    </include>  -->
+   <!-- ========== Start the 3d Laser and Laser Scan ========== -->
+
     <!-- Start the 3d LRF -->
     <include file="$(find gvr_navigation)/launch/velodyne32e.launch">
     </include>
 
-    <include file="$(find gvr_navigation)/launch/testLaserMatch.launch"/>
-    <!-- Start ekf to make imu into odom 
+   <include file="$(find gvr_navigation)/launch/gvr.launch"/>
+  <!--    Start ekf to make imu into odom 
     <include file="$(find gvr_navigation)/launch/gvr_ekf.launch">
     </include> 
 -->
 
-<!-- USE laser scan matcher instead of ekf iot incorporate laser based odometry 
-    <include file="$(find gvr_navigation)/launch/gvr_laser_matcher.launch"/>-->
+<!-- USE laser scan matcher instead of ekf iot incorporate laser based odometry -->
+    <include file="$(find gvr_navigation)/launch/gvr_laser_matcher.launch"/>
 
   <!--  ************** Navigation  ***************  -->
   <include file="$(find gvr_navigation)/launch/includes/move_base.launch.xml"/>
