@@ -46,8 +46,8 @@
     <include file="$(find gvr_navigation)/launch/velodyne32e.launch">
     </include>
 
-   <!-- <include file="$(find gvr_navigation)/launch/gvr.launch"/>
-     Start ekf to make imu into odom 
+   <include file="$(find gvr_navigation)/launch/gvr.launch"/>
+  <!--    Start ekf to make imu into odom 
     <include file="$(find gvr_navigation)/launch/gvr_ekf.launch">
     </include> 
 -->
