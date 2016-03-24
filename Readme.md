@@ -5,4 +5,5 @@ Solution: Use the autonomous.sh script to start the robot navigation. Since rosl
 
 Instructions: To run gvr_navigation use rosrun of the script not roslaunch.
 The command to start this is now:
+
 `rosrun gvr_navigation autonomous.sh`
