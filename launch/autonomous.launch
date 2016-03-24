@@ -10,7 +10,7 @@
 
 -->
     <node pkg="tf" type="static_transform_publisher" name="velodyne_to_velodyneStatic"
-   args=" 0 0 0 0 0 0 velodyne_laser_static velodyne  100" />
+   args=" 0 0 0 -1.57 0 0 velodyne_laser_static velodyne  100" />
 
      <!-- ========== Load Map Server   ========= -->
   <node pkg="map_server" type="map_server" name="map_server" output="screen"
@@ -44,7 +44,7 @@
 
     <!-- Start the 3d LRF -->
     <include file="$(find gvr_navigation)/launch/velodyne32e.launch">
-    </include>
+    </include>  
 
 <!--   <include file="$(find gvr_navigation)/launch/gvr.launch"/>
       Start ekf to make imu into odom 
@@ -52,8 +52,8 @@
     </include> 
 -->
 
-<!-- USE laser scan matcher instead of ekf iot incorporate laser based odometry -->
-    <include file="$(find gvr_navigation)/launch/gvr_laser_matcher.launch"/>
+<!-- USE laser scan matcher instead of ekf iot incorporate laser based odometry  -->
+    <include file="$(find gvr_navigation)/launch/gvr_laser_matcher.launch"/> 
 
   <!--  ************** Navigation  ***************  -->
   <include file="$(find gvr_navigation)/launch/includes/move_base.launch.xml"/>

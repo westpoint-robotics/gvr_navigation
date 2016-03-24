@@ -1,0 +1,26 @@
+<!--GVR Autonomous Launch-->
+<launch>
+
+
+<!-- launch the GVR bot -->
+<node name="gvr_bot_bridge" pkg="gvr_bot" type="run_gvr_bot.sh" output="screen" />
+
+   <!-- ========== Joystick  and Command Velocity Mux ========== -->
+    <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
+
+    <node pkg="nodelet" type="nodelet" name="cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
+        <param name="yaml_cfg_file" value="$(find gvr_navigation)/param/mux.yaml"/>
+        <remap from="cmd_vel_mux/output" to="/gvr_bot/cmd_vel"/>
+    </node>
+
+    <include file="$(find gvr_navigation)/launch/xbox360_teleop.launch"/>
+
+ <!-- Start an rviz node with a custom configuration  -->
+ <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find gvr_navigation)/launch/gvr.rviz"/>
+
+
+</launch>
+<!--
+rosbag record -O mylaserdata /scan /tf 
+-->
+
