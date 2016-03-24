@@ -1,8 +1,0 @@
-<!-- Laser scan matcher-->
-<launch>
-<node pkg="laser_scan_matcher" type="laser_scan_matcher_node" name="laser_scan_matcher_node" output="screen">
-   <rosparam file="$ (find gvr_navigation)/param/gvr_scan_matcher.yaml" command= "load"/>
-
-
-  </node>
-</launch>

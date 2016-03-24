@@ -1,4 +1,5 @@
 <!--GVR Autonomous Launch-->
+
 <launch>
 
 <!--
@@ -25,6 +26,7 @@
 
 <!-- launch the GVR bot -->
 <node name="gvr_bot_bridge" pkg="gvr_bot" type="run_gvr_bot.sh" output="screen" />
+
 
    <!-- ========== Joystick  and Command Velocity Mux ========== -->
     <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
