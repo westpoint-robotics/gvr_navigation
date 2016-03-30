@@ -23,10 +23,8 @@
 
  <include file="$(find gvr_navigation)/launch/gvr_bot_urdf.launch"/>
 
-
-<!-- launch the GVR bot -->
-<node name="gvr_bot_bridge" pkg="gvr_bot" type="run_gvr_bot.sh" output="screen" />
-
+<!-- launch the GVR bot     -->
+ <node name="gvr_bot_bridge" pkg="gvr_bot" type="run_gvr_bot.sh"/>
 
    <!-- ========== Joystick  and Command Velocity Mux ========== -->
     <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>

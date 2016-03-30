@@ -1,12 +1,15 @@
-<!--URDF Launch -->
 <launch>
-	<param name= "robot_description" command="$(find xacro)/xacro.py '$(find gvr_navigation)/launch/includes/gvr_bot_urdf.xacro'"/>
-
-	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
-		<param name="publish_frequency" type="double" value="30.0" />
-		<param name="tf_prefix" type="string" value=""/>
-	</node>
-	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find gvr_bot)/urdf/gvr_bot.urdf.xacro'" />
+  <node
+    name="joint_state_publisher"
+    pkg="joint_state_publisher"
+   type="joint_state_publisher" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher">
+     <param name="publish_frequency" value="250.0" />
+  </node>
 	
 	
 </launch>
