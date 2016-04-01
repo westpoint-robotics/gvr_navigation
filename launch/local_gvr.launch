@@ -14,7 +14,11 @@
    args=" 0 0 0 -1.57 0 0 velodyne_laser_static velodyne  100" />
 
      <!-- ========== Load Map Server   ========= -->
-
+  <node pkg="map_server" type="map_server" name="map_server" output="screen"
+    args="$(find gvr_navigation)/maps/mapCleanRoom.yaml">
+           <param name="frame_id" value="/map"/>
+           
+</node> 
      <!-- ========== Integrate Pioneer Robot ========== -->
 
  <include file="$(find gvr_navigation)/launch/gvr_bot_urdf.launch"/>
