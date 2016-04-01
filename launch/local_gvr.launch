@@ -30,7 +30,7 @@
         <remap from="cmd_vel_mux/output" to="/gvr_bot/cmd_vel"/>
     </node>
 
-    <include file="$(find gvr_navigation)/launch/xbox360_teleop.launch"/>
+ <!--   <include file="$(find gvr_navigation)/launch/xbox360_teleop.launch"/> -->
 
    <!-- ========== Start the IMU   ========== -->
     <node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu">
