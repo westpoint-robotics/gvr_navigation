@@ -8,4 +8,4 @@
 
 
 <include file="$(find gvr_navigation)/launch/includes/amcl.launch.xml"/>
-<launch/>
+<launch/> 
