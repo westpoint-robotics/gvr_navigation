@@ -28,7 +28,7 @@
 
 
    <!-- ========== Start the IMU   ========== -->
-  <!-- ========== Start the IMU   ========== -->
+
     <node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu">
     </node> 
 
