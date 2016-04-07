@@ -3,9 +3,9 @@
   <node pkg="map_server" type="map_server" name="map_server" output="screen"
     args="$(find gvr_navigation)/maps/mapCleanRoom.yaml">
            <param name="frame_id" value="/map"/>
-
+</node>
   <include file="$(find gvr_navigation)/launch/includes/move_base.launch.xml"/>
 
 
 <include file="$(find gvr_navigation)/launch/includes/amcl.launch.xml"/>
-<launch/> 
+</launch> 
