@@ -1,11 +1,63 @@
+<!--GVR Autonomous Launch-->
+
 <launch>
 
+
+    <node pkg="tf" type="static_transform_publisher" name="velodyne_to_velodyneStatic"
+   args=" 0 0 0 -1.57 0 0 velodyne_laser_static velodyne  100" />
+
+     <!-- ========== Load Map Server   ========= -->
   <node pkg="map_server" type="map_server" name="map_server" output="screen"
     args="$(find gvr_navigation)/maps/mapCleanRoom.yaml">
            <param name="frame_id" value="/map"/>
-</node>
+           
+</node> 
+     <!-- ========== Integrate Pioneer Robot ========== -->
+
+ <include file="$(find gvr_navigation)/launch/gvr_bot_urdf.launch"/>
+
+<!-- launch the GVR bot     -->
+ <node name="gvr_bot_bridge" pkg="gvr_bot" type="run_gvr_bot.sh"/>
+
+   <!-- ========== Joystick  and Command Velocity Mux ========== -->
+    <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
+
+    <node pkg="nodelet" type="nodelet" name="cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet mobile_base_nodelet_manager">
+        <param name="yaml_cfg_file" value="$(find gvr_navigation)/param/mux.yaml"/>
+        <remap from="cmd_vel_mux/output" to="/gvr_bot/cmd_vel"/>
+    </node>
+
+
+   <!-- ========== Start the IMU   ========== -->
+    <node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu">
+    </node> 
+
+   <!-- ========== Start the 3d Laser and Laser Scan ========== -->
+
+    <!-- Start the 3d LRF -->
+    <include file="$(find gvr_navigation)/launch/velodyne32e.launch">
+    </include>  
+
+<!--   <include file="$(find gvr_navigation)/launch/gvr.launch"/>
+      Start ekf to make imu into odom 
+    <include file="$(find gvr_navigation)/launch/gvr_ekf.launch">
+    </include> 
+-->
+
+<!-- USE laser scan matcher instead of ekf iot incorporate laser based odometry  -->
+    <include file="$(find gvr_navigation)/launch/gvr_laser_matcher.launch"/> 
+
+  <!--  ************** Navigation  ***************  -->
   <include file="$(find gvr_navigation)/launch/includes/move_base.launch.xml"/>
 
 
-<include file="$(find gvr_navigation)/launch/includes/amcl.launch.xml"/>
-</launch> 
+     <include file="$(find gvr_navigation)/launch/includes/amcl.launch.xml">
+  </include>
+ <!-- Start an rviz node with a custom configuration  -->
+
+
+
+</launch>
+<!--
+rosbag record -O mylaserdata /scan /tf 
+-->
