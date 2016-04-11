@@ -1,0 +1,146 @@
+amcl: {base_frame_id: /base_link, beam_skip_distance: 2.0, beam_skip_threshold: 1.0,
+  do_beamskip: false, first_map_only: false, global_frame_id: /map, gui_publish_rate: 10.0,
+  initial_cov_aa: 0.0003569730951899687, initial_cov_xx: 0.005824352589200998, initial_cov_yy: 0.0012419115555175608,
+  initial_pose_a: -0.32561861070183884, initial_pose_x: 8.274124911734837, initial_pose_y: 6.137419428708806,
+  kld_err: 0.05, kld_z: 0.99, laser_lambda_short: 0.1, laser_likelihood_max_dist: 5.0,
+  laser_max_beams: 60, laser_max_range: 50.0, laser_min_range: -1.0, laser_model_type: likelihood_field,
+  laser_sigma_hit: 0.2, laser_z_hit: 0.5, laser_z_max: 0.05, laser_z_rand: 0.5, laser_z_short: 0.05,
+  max_particles: 5000, min_particles: 500, odom_alpha1: 0.2, odom_alpha2: 0.2, odom_alpha3: 0.2,
+  odom_alpha4: 0.2, odom_alpha5: 0.1, odom_frame_id: /odom, odom_model_type: diff,
+  recovery_alpha_fast: 0.1, recovery_alpha_slow: 0.0001, resample_interval: 1, restore_defaults: false,
+  save_pose_rate: 0.5, tf_broadcast: true, transform_tolerance: 0.1, update_min_a: 0.2,
+  update_min_d: 0.1, use_map_topic: true}
+cloud_nodelet: {calibration: /opt/ros/indigo/share/velodyne_pointcloud/params/32db.yaml,
+  max_range: 130.0, min_range: 0.9, view_direction: 0.0, view_width: 6.28318530718}
+cmd_vel_mux: {yaml_cfg_file: /home/user1/catkin_ws/src/gvr_navigation/param/mux.yaml}
+driver_nodelet: {frame_id: velodyne, model: 32E, pcap: '', read_fast: false, read_once: false,
+  repeat_delay: 0.0, rpm: 600.0}
+laser_scan_matcher_node: {base_frame: base_link, cloud_range_max: 50.0, cloud_range_min: 0.1,
+  epsilon_theta: 1.0e-06, epsilon_xy: 1.0e-06, fixed_frame: odom, kf_dist_angular: 0.0175,
+  kf_dist_linear: 0.1, max_iterations: 10, max_linear_correction: 0.5, outliers_maxPerc: 0.9,
+  publish_pose: true, publish_pose_stamped: false, publish_tf: true, use_cloud_input: false,
+  use_imu: true, use_odom: false, use_vel: false}
+map_server: {frame_id: /map}
+move_base:
+  DWAPlannerROS: {acc_lim_theta: 2.0, acc_lim_x: 1.0, acc_lim_y: 0.0, acc_limit_trans: 0.1,
+    angular_sim_granularity: 0.1, forward_point_distance: 0.325, global_frame_id: odom,
+    goal_distance_bias: 24.0, max_rot_vel: 5.0, max_scaling_factor: 0.2, max_trans_vel: 0.5,
+    max_vel_x: 5.0, max_vel_y: 0.0, meter_scoring: true, min_rot_vel: 0.4, min_trans_vel: 0.1,
+    min_vel_x: 0.0, min_vel_y: 0.0, occdist_scale: 0.1, oscillation_reset_angle: 0.2,
+    oscillation_reset_dist: 0.05, path_distance_bias: 40.0, prune_plan: false, publish_cost_grid_pc: true,
+    publish_traj_pc: true, restore_defaults: false, rot_stopped_vel: 0.4, scaling_speed: 0.25,
+    sim_granularity: 0.025, sim_time: 1.0, stop_time_buffer: 0.2, trans_stopped_vel: 0.1,
+    use_dwa: true, vth_samples: 20, vtheta_samples: 20, vx_samples: 6, vy_samples: 1,
+    xy_goal_tolerance: 0.15, yaw_goal_tolerance: 0.3}
+  GlobalPlanner: {allow_unknown: true, cost_factor: 3.0, default_tolerance: 0.0, lethal_cost: 253,
+    neutral_cost: 50, old_navfn_behavior: false, planner_costmap_publish_frequency: 0.0,
+    planner_window_x: 0.0, planner_window_y: 0.0, publish_potential: true, publish_scale: 100,
+    use_dijkstra: false, use_grid_path: false, use_quadratic: true, use_static_map: true}
+  aggressive_reset: {reset_distance: 1.84}
+  base_global_planner: navfn/NavfnROS
+  base_local_planner: dwa_local_planner/DWAPlannerROS
+  clearing_rotation_allowed: true
+  conservative_reset: {reset_distance: 3.0}
+  conservative_reset_dist: 3.0
+  controller_frequency: 5.0
+  controller_patience: 3.0
+  global_costmap:
+    footprint: '[[0.3072,0.2159],[0.3072,-0.2159],[-0.3072,-0.2159],[-0.3072,0.2159]]'
+    footprint_padding: 0.01
+    global_frame: map
+    height: 10
+    inflation_layer: {cost_scaling_factor: 10.0, enabled: true, inflation_radius: 0.5}
+    inflation_radius: 0.55
+    obstacle_layer:
+      combination_method: 1
+      enabled: true
+      footprint_clearing_enabled: true
+      laser_scan_sensor: {clearing: true, data_type: LaserScan, marking: true, max_obstacle_height: 0.35,
+        min_obstacle_height: 0.15, topic: /scan}
+      max_obstacle_height: 0.4
+      observation_sources: laser_scan_sensor point_cloud_sensor
+      origin_z: 0.0
+      point_cloud_sensor: {clearing: true, data_type: PointCloud2, marking: true,
+        max_obstacle_height: 0.15, min_obstacle_height: 0.02, topic: /velodyne_points}
+      track_unknown_space: true
+      z_resolution: 0.2
+    obstacle_range: 4.5
+    origin_x: 0.0
+    origin_y: 0.0
+    plugins:
+    - {name: static_layer, type: 'costmap_2d::StaticLayer'}
+    - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
+    - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
+    publish_frequency: 2.0
+    raytrace_range: 6.0
+    resolution: 0.05
+    robot_base_frame: base_link
+    robot_radius: 0.46
+    static_layer: {enabled: true, mark_threshold: 0, unknown_threshold: 15}
+    static_map: true
+    transform_tolerance: 0.5
+    update_frequency: 0.2
+    width: 10
+  local_costmap:
+    footprint: '[[0.3072,0.2159],[0.3072,-0.2159],[-0.3072,-0.2159],[-0.3072,0.2159]]'
+    footprint_padding: 0.01
+    global_frame: odom
+    height: 10
+    inflation_layer: {cost_scaling_factor: 10.0, enabled: true, inflation_radius: 0.5}
+    inflation_radius: 0.55
+    obstacle_layer:
+      combination_method: 1
+      enabled: true
+      footprint_clearing_enabled: true
+      laser_scan_sensor: {clearing: true, data_type: LaserScan, marking: true, max_obstacle_height: 0.35,
+        min_obstacle_height: 0.15, topic: /scan}
+      max_obstacle_height: 0.4
+      observation_sources: laser_scan_sensor point_cloud_sensor
+      origin_z: 0.0
+      point_cloud_sensor: {clearing: true, data_type: PointCloud2, marking: true,
+        max_obstacle_height: 0.15, min_obstacle_height: 0.02, topic: /velodyne_points}
+      track_unknown_space: true
+      z_resolution: 0.2
+    obstacle_range: 4.5
+    origin_x: 0.0
+    origin_y: 0.0
+    plugins:
+    - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
+    - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
+    - {name: static_layer, type: 'costmap_2d::StaticLayer'}
+    publish_frequency: 1.0
+    raytrace_range: 6.0
+    resolution: 0.05
+    robot_base_frame: base_link
+    robot_radius: 0.46
+    rolling_window: true
+    static_layer: {enabled: true, mark_threshold: 0, unknown_threshold: 15}
+    static_map: false
+    transform_tolerance: 0.5
+    update_frequency: 5.0
+    width: 10
+  oscillation_distance: 0.2
+  oscillation_timeout: 10.0
+  planner_frequency: 1.0
+  planner_patience: 5.0
+  recovery_behavior_enabled: true
+  restore_defaults: false
+  shutdown_costmaps: false
+navigation_velocity_smoother: {accel_lim_v: 2.0, accel_lim_w: 2.0, decel_factor: 1.5,
+  frequency: 20.0, robot_feedback: 2, speed_lim_v: 3.0, speed_lim_w: 5.4}
+pointcloud_to_laserscan: {angle_max: 3.14159, angle_min: -3.14159, output_frame_id: /velodyne_laser_static,
+  range_max: 50, range_min: 0, scan_time: 1/1000.0}
+robot_description: "<?xml version=\"1.0\" ?>\n<!-- ===================================================================================\
+
+robot_state_publisher: {publish_frequency: 250.0}
+rosdistro: 'indigo
+
+  '
+roslaunch:
+  uris: {host_192_168_200_50__58233: 'http://192.168.200.50:58233/', host_ros02__46671: 'http://ros02:46671/'}
+rosversion: '1.11.16
+
+  '
+run_id: a81480d0-fffb-11e5-88a1-fcaa146ca110
+turtlebot_teleop_joystick: {axis_angular: 0, axis_deadman: 4, axis_linear: 1, scale_angular: 0.5,
+  scale_linear: 0.5}
