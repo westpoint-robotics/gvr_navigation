@@ -8,7 +8,11 @@ Panels:
         - /TF1/Tree1
         - /Local Planning1
         - /Local Planning1/Costmap1
+        - /Local Planning1/Planner1
+        - /Global Planning1
         - /Global Planning1/Planner1
+        - /EBand boubles1
+        - /Path1
       Splitter Ratio: 0.5
     Tree Height: 585
   - Class: rviz/Selection
@@ -36,7 +40,7 @@ Visualization Manager:
       Cell Size: 1
       Class: rviz/Grid
       Color: 160; 160; 164
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.03
         Value: Lines
@@ -49,128 +53,22 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
-      Value: true
+      Value: false
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: true
+      Enabled: false
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        flea3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        flea3_optical:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        left_0_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_1_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_2_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_3_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_4_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_5_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        plexiglass_base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_0_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_1_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_2_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_3_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_4_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_5_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_laser_spin:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_laser_static:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_mast_top:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
-      Value: true
+      Value: false
       Visual Enabled: true
     - Class: rviz/TF
       Enabled: false
@@ -198,7 +96,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 1
@@ -214,7 +112,7 @@ Visualization Manager:
       Topic: /scan
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -258,10 +156,10 @@ Visualization Manager:
           Class: rviz/Map
           Color Scheme: costmap
           Draw Behind: true
-          Enabled: true
+          Enabled: false
           Name: Costmap
           Topic: /move_base/local_costmap/costmap
-          Value: true
+          Value: false
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
@@ -288,10 +186,10 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
-          Enabled: true
+          Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 726.3
+          Max Intensity: 394.8
           Min Color: 0; 0; 0
           Min Intensity: 0
           Name: Cost Cloud
@@ -304,7 +202,7 @@ Visualization Manager:
           Topic: /move_base/DWAPlannerROS/cost_cloud
           Use Fixed Frame: true
           Use rainbow: true
-          Value: true
+          Value: false
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -320,9 +218,9 @@ Visualization Manager:
           Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 128.275
+          Max Intensity: 7.4
           Min Color: 0; 0; 0
-          Min Intensity: 43.2
+          Min Intensity: 0
           Name: Trajectory Cloud
           Position Transformer: XYZ
           Queue Size: 10
@@ -342,10 +240,10 @@ Visualization Manager:
           Class: rviz/Map
           Color Scheme: costmap
           Draw Behind: true
-          Enabled: true
+          Enabled: false
           Name: Costmap
           Topic: /move_base/global_costmap/costmap
-          Value: true
+          Value: false
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
@@ -358,7 +256,7 @@ Visualization Manager:
             X: 0
             Y: 0
             Z: 0
-          Topic: /move_base/DWAPlannerROS/global_plan
+          Topic: /move_base/GlobalPlanner/plan
           Value: true
       Enabled: true
       Name: Global Planning
@@ -379,15 +277,15 @@ Visualization Manager:
     - Arrow Length: 0.2
       Class: rviz/PoseArray
       Color: 0; 192; 0
-      Enabled: true
+      Enabled: false
       Name: ParticleCloud
       Topic: /particlecloud
-      Value: true
+      Value: false
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
-      Color: 25; 255; 0
-      Enabled: false
+      Color: 0; 0; 0
+      Enabled: true
       Line Style: Lines
       Line Width: 0.03
       Name: Path (global)
@@ -396,25 +294,46 @@ Visualization Manager:
         Y: 0
         Z: 0
       Topic: /move_base/NavfnROS/plan
-      Value: false
+      Value: true
     - Angle Tolerance: 0.1
       Class: rviz/Odometry
       Color: 48; 48; 48
-      Enabled: false
+      Enabled: true
       Keep: 10
       Length: 0.4
       Name: Odometry
       Position Tolerance: 0.1
       Topic: /odom
-      Value: false
+      Value: true
     - Class: rviz/MarkerArray
-      Enabled: false
+      Enabled: true
       Marker Topic: /move_base/EBandPlannerROS/eband_visualization_array
       Name: EBand boubles
       Namespaces:
         {}
       Queue Size: 100
-      Value: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 25; 255; 0
+      Enabled: true
+      Name: Polygon
+      Topic: /move_base/local_costmap/footprint
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 0; 0; 0
+      Enabled: true
+      Line Style: Lines
+      Line Width: 0.03
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Topic: /move_base/DWAPlannerROS/global_plan
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -443,7 +362,7 @@ Visualization Manager:
         Value: false
       Name: Current View
       Near Clip Distance: 0.01
-      Scale: 100.209
+      Scale: 64.8638
       Target Frame: base_link
       Value: TopDownOrtho (rviz)
       X: 0.047346
