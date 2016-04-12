@@ -1,7 +1,7 @@
 #Laser_scan_matcher:
 #<!-- Laser Scan matcher params -->
 
-    fixed_frame: odom
+    fixed_frame: map
     base_frame: base_link
 
     use_imu: true
@@ -14,7 +14,7 @@
     cloud_range_max: 50.0
     kf_dist_linear: .1
     kf_dist_angular: .0175 
-    publish_tf: false
+    publish_tf: true
     publish_pose: true
     publish_pose_stamped: false
     max_iterations: 10 
