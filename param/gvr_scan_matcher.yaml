@@ -4,7 +4,7 @@
     fixed_frame: odom
     base_frame: base_link
 
-    use_imu: false
+    use_imu: true
     use_odom: false 
     use_vel: false 
 #Parameters when using sensor_msgs/PointCloud2 instead of sensor_msgs/LaserScan messages.
