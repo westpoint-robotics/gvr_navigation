@@ -30,7 +30,7 @@
 
    <!-- ========== Start the IMU   ========== -->
     <node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu">
-    <remap from="/imu/data_raw" to="/imu/data"/>
+    
     </node> 
 
    <!-- ========== Start the 3d Laser and Laser Scan ========== -->
