@@ -58,7 +58,7 @@
 
 <include file="$(find usma_remote_interface)/launch/remote.launch"/>
 
-<include file="$(find usma_ptu)/launch/move_ptu_joy.launch/">
+<include file="$(find usma_ptu)/launch/move_ptu_joy.launch/"/>
 
 </launch>
 <!--
