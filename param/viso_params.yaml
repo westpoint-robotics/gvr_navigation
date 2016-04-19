@@ -1,0 +1,7 @@
+#Visual Odom Yaml
+
+camera_height:  .23
+camera_pitch:   0.0         #maybe this should change with the robo movement
+ransac_iters:   2000        #no clue what this is
+inlier_threshold:   .00001  #default value
+motion_threshold:   100.0   #default value
