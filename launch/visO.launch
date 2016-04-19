@@ -4,6 +4,9 @@
     <rosparam file= "$(find gvr_navigation)/param/viso_params.yaml"/>
     <remap from="image" to="/_camera/image_raw"/>       
     </node>
+
+     <include file="$(find gvr_navigation)/launch/gvr_ekf.launch">
+    </include> 
     
     
 </launch>

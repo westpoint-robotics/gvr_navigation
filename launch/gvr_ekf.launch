@@ -10,10 +10,11 @@
       <param name="map_frame" value="map"/>
       <param name="odom_frame" value="odom"/>
       <param name="base_link_frame" value="base_link"/>
-      <param name="world_frame" value="odom"/>
+      <param name="world_frame" value="map"/>
       
 <!-- TODO    <param name="odom0" value=""/>  -->
       <param name="imu0" value="/imu/data"/>
+      <param name="odom0" value="/monoVision_odometer/odometry"/>
 
 <rosparam param="odom0_config">[false, false, false, 
                                 false, false, false, 
@@ -35,10 +36,9 @@
       <param name="odom0_relative" value="true"/> <!-- -->
       <param name="imu0_relative" value="true"/>
 <!-- Placeholder for output topic remapping -->
-      <remap from="odometry/filtered" to="/odom"/>
-
-   <!--   <remap from="/tf" to="/rosariatf"/>  -->
+      
 
     </node>
+    <remap from="odometry/filtered" to="/odom"/>
 
 </launch>
