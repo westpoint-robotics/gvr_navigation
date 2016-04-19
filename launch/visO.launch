@@ -2,7 +2,8 @@
 <launch>
     <node name ="monoVision_odometer" pkg="viso2_ros" type="mono_odometer" >
     <rosparam file= "$(find gvr_navigation)/param/viso_params.yaml"/>
-    <remap from ="odom" to="visualOdom/odom"/>
+    <remap from="image" to="/_camera/image"        
     </node>
-
+    
+    
 </launch>
