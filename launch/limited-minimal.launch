@@ -29,13 +29,17 @@
 
 
    <!-- ========== Start the IMU   ========== -->
-
-
+    <include file="$(find xsens_driver)/launch/xsens_driver.launch"/>
    <!-- ========== Start the 3d Laser and Laser Scan ========== -->
 
     <!-- Start the 3d LRF -->
     <include file="$(find gvr_navigation)/launch/velodyne32e.launch">
     </include>  
+
+    <include file="$(find usma_vision)/launch/pointgrey_camera.launch"/>
+    <include file="$(find usma_remote_interface)/launch/remote.launch"/>
+    <include file="$(find usma_ptu)/launch/ptu_touch.launch"/>
+    
 
 <!--   <include file="$(find gvr_navigation)/launch/gvr.launch"/>
       Start ekf to make imu into odom 
