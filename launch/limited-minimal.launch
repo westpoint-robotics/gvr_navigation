@@ -8,7 +8,7 @@
 
      <!-- ========== Load Map Server   ========= -->
   <node pkg="map_server" type="map_server" name="map_server" output="screen"
-    args="$(find gvr_navigation)/maps/mapCleanRoom.yaml">
+    args="$(find gvr_navigation)/maps/map.yaml">
            <param name="frame_id" value="/map"/>
            
 </node> 

@@ -2,7 +2,7 @@ obstacle_range: 4.5
 raytrace_range: 6.0
 footprint: [[0.3072,0.2159, ],[0.3072,-0.2159 ], [-0.3072,-0.2159],[-0.3072,0.2159]]
 #robot_radius: .2
-inflation_radius: 10
+inflation_radius: 3
 
 
 obstacle_layer:
@@ -30,7 +30,7 @@ obstacle_layer:
 inflation_layer:
   enabled:              true
   cost_scaling_factor:  10.0  # exponential rate at which the obstacle cost drops off (default: 10)
-  inflation_radius:     20  # max. distance from an obstacle at which costs are incurred for planning paths.
+  inflation_radius:     20.0  # max. distance from an obstacle at which costs are incurred for planning paths.
 
 static_layer:
   enabled:              true

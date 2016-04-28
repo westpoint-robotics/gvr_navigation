@@ -32,7 +32,7 @@ class NavTest():
         # that the robot started at.
         #globals = [(0.5,0),(1.0,0),(1.5,0)]
         #globals = [(1,0)]
-        globals =[(-15,14),(6,7),(-15,14),(6,7)]
+        globals =[(-.5,-22),(18,-14),(2,30),(-17,23),(-10,3)]
         rospy.init_node('nav_test', anonymous=True)        
         rospy.on_shutdown(self.shutdown)        
 
