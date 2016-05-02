@@ -8,7 +8,7 @@
 
      <!-- ========== Load Map Server   ========= -->
   <node pkg="map_server" type="map_server" name="map_server" output="screen"
-    args="$(find gvr_navigation)/maps/map.yaml">
+    args="$(find gvr_navigation)/maps/ballroom.yaml">
            <param name="frame_id" value="/map"/>
            
 </node> 
@@ -42,7 +42,10 @@
    <arg name="nodelet_manager_name" value="left_nodelet_manager" />
   </include>
     <include file="$(find usma_remote_interface)/launch/remote.launch"/>
-    <include file="$(find usma_ptu)/launch/ptu_touch.launch"/>
+		
+    <include file="$(find usma_ptu)/launch/ptu_touch.launch">
+
+	</include>
    
 
 <!--   <include file="$(find gvr_navigation)/launch/gvr.launch"/>
