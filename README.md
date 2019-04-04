@@ -1,5 +1,5 @@
-## This code was mostly written by CDT Sam Skillman for a indoor navigation Capstone Project
-## It should be used as a reference and the capabilities migrated to usma_gvrbot repository.
+## This code was mostly written by CDT Sam Skillman for an indoor navigation Capstone Project
+### It should be used as a reference and the capabilities migrated to usma_gvrbot repository.
 
 On the base station
 1. SSH into the brix computer
